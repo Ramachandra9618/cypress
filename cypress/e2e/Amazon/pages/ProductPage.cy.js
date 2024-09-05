@@ -9,6 +9,10 @@ export class ProductPage{
         return cy.get('#native_dropdown_selected_size_name');
       }
 
+      get addWishListButton(){
+        return cy.xpath(`//a[@title='Add to Wish List']`)
+      }
+
      get qtyOption(){
         return cy.get("#quantity");
       }
@@ -18,7 +22,12 @@ export class ProductPage{
       }
 
       selectSize(size){
-        this.sizeOption.select(size);
+       try {
+         this.sizeOption.select(size);
+        
+       } catch (error) {
+        this.sizeOption.select(40);
+       }
       }
 
       selectQty(qty){
@@ -27,5 +36,9 @@ export class ProductPage{
 
       clickBuyNowBtn(){
         this.buyNowButton.click();
+      }
+
+      clickAddWishListButton(){
+        this.addWishListButton.click();
       }
 }

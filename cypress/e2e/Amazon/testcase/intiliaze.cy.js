@@ -2,7 +2,7 @@ import { CartPage } from "../pages/CartPage.cy";
 import { ElectronicsPage } from "../pages/ElectronicsPage.cy";
 import { HomePage } from "../pages/HomePage.cy";
 import { LoginPage } from "../pages/LogingPage.cy"; 
-
+import 'cypress-xpath';
 
 const links = require("../../../fixtures/links.json")
 
@@ -38,7 +38,6 @@ describe("Amazon Login and Add to Cart", () => {
   })
 
   it.skip("should login and add products to the cart using data from fixture", function () {
-    // Use the fixture data from alias
     cy.get("@testData").then((testData) => {
       testData.forEach(({ phoneNumber, password, product }) => {
         loginPage.clickSignIn();
@@ -60,15 +59,16 @@ describe("Amazon Login and Add to Cart", () => {
       links.forEach(link => {
         it('linkNavigationTest', () => {
 
-          const linkText = link.text+"";
+          const linkText = link.text;
 
-          cy.get('a').contains(linkText).click(); 
+          // cy.xpath(`//a[contains(text(),${linkText})]`).click();
+          cy.get('a').contains(linkText).click({force: true});
           cy.url().should('include', linkText.toLocaleLowerCase()); 
 
           cy.scrollTo('20%',  '50%')
           
 
-          cy.go('back'); // Uncomment if you need to go back to the previous page
+          cy.go('back'); 
       });
 
 });

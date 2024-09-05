@@ -29,7 +29,7 @@ loginData.forEach(data => {
     homePage.searchProduct('shirt for men');
     productPage.clickFirstProduct()
     productPage.selectQty(2);
-    // productPage.selectSize('m')
+    // productPage.selectSize('M')
     productPage.clickBuyNowBtn();
     checkoutPage.selectOption('COD');
     checkoutPage.clickOnPlaceOrder();
