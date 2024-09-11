@@ -3,6 +3,12 @@ export class CartPage {
     addToCartButton() {
       return cy.get('#add-to-cart-button');
     }
+    get proceedToBuyButton(){
+      return cy.get(`#sc-buy-box-ptc-button > .a-button-inner > .a-button-input`);
+    }
+    get reviewOrderButton(){
+      return cy.get(`#spcViewButtonId > .a-button-inner > [data-testid]`);
+    }
 
    get deleteButton(){
       return cy.get('input').contains('Delete')
@@ -16,6 +22,13 @@ export class CartPage {
     }
     clickDeleteButton(){
       this.deleteButton.click({multiple: true})
+    }
+    clickProceedToBuyButton(){
+      this.proceedToBuyButton.click();
+    }
+
+    clickReviewOrderButton(){
+      this.reviewOrderButton();
     }
 
   }
